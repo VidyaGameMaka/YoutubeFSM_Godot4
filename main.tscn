@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfjgp65s3tgd"]
+
+[ext_resource type="PackedScene" uid="uid://cc0p8kdmf56rh" path="res://FSM/KnightPlayer/KnightPlayer_PFB.tscn" id="1_ig7tw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
+size = Vector2(1169, 20)
+
+[node name="Main" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(574.5, 644)
+shape = SubResource("RectangleShape2D_7dm0k")
+
+[node name="KnightPlayer" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(549, 154)

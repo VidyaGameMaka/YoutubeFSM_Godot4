@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-namespace FSM.StateMachineBase;
+namespace FSM;
 
 /// <summary>
 /// A contract for how a state can be coded.

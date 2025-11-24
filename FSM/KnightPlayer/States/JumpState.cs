@@ -2,8 +2,8 @@ using Godot;
 
 namespace FSM.KnightPlayer;
 
-public partial class IdleState : State<StateTypes, KnightPlayer> {
-	public IdleState() : base(StateTypes.idle) { }
+public partial class JumpState : State<StateTypes, KnightPlayer> {
+	public JumpState() : base(StateTypes.jump) { }
 
 	public override void EnterState(KnightPlayer actor) {
 		base.EnterState(actor);
@@ -12,6 +12,5 @@ public partial class IdleState : State<StateTypes, KnightPlayer> {
 
 	public override void PhysicsProcessState(double delta) {
 	}
-
 
 }

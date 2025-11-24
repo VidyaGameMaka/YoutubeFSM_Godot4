@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-namespace FSM.StateMachineBase;
+namespace FSM;
 
 /// <summary>
 /// Generic state machine that manages states and transitions.
@@ -13,7 +13,6 @@ public partial class StateMachine<TStateType, TActor> : Node where TStateType : 
 
 	private readonly Dictionary<TStateType, State<TStateType, TActor>> _statesDict = new Dictionary<TStateType, State<TStateType, TActor>>();
 	public State<TStateType, TActor> _currentState { get; private set; }
-	public TStateType CurrentStateType => _currentState != null ? _currentState.StateType : default(TStateType);
 
 	// Godot Signal - StateChanged
 	[Signal] public delegate void StateChangedEventHandler(int newState, int previousState);
@@ -25,7 +24,7 @@ public partial class StateMachine<TStateType, TActor> : Node where TStateType : 
 			_statesDict.Add(state.StateType, state);
 	}
 
-	public void Init(TActor actor, TStateType initialState) {
+	public void Init(TStateType initialState, TActor actor) {
 		if (!_statesDict.ContainsKey(initialState)) {
 			GD.PrintErr($"StateMachine: State {initialState} not found, cannot init state.");
 			return;
@@ -58,6 +57,5 @@ public partial class StateMachine<TStateType, TActor> : Node where TStateType : 
 
 	public void Process(double delta) => _currentState?.ProcessState(delta);
 	public void PhysicsProcess(double delta) => _currentState?.PhysicsProcessState(delta);
-
 	public bool HasState(TStateType type) => _statesDict.ContainsKey(type);
 }

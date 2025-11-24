@@ -1,15 +1,15 @@
-namespace FSM.StateMachineBase;
+namespace FSM;
 
 public enum InputAxisNames {
-	up,
-	down,
-	left,
-	right
+	ui_up,
+	ui_down,
+	ui_left,
+	ui_right
 }
 
 public enum InputButtonNames {
 	attack,
-	jump
+	ui_accept,
 }
 
 public enum FacingDirection {
